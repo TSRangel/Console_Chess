@@ -19,7 +19,7 @@ namespace xadrez_console
                         Console.Write($"{board.Piece(i, j)} ");
                     }
                 }
-                //Console.WriteLine();
+                Console.WriteLine();
             }
         }
     }
