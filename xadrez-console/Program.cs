@@ -7,13 +7,30 @@ class Program
 {
     static void Main()
     {
-        Board chessboard = new Board(8, 8);
-        King whitePiece = new King(Color.White, chessboard);
-        King yellowPiece = new King(Color.Yellow, chessboard);
+        try
+        {
+            ChessMatch chessMatch = new ChessMatch();
 
-        chessboard.InsertPiece(whitePiece, new Position(0, 0));
-        chessboard.InsertPiece(yellowPiece, new Position(5, 5));
+            while (!chessMatch.IsFinished)
+            {
+                Console.Clear();
+                Screen.ChessboardPrinter(chessMatch.Board);
 
-        Screen.ChessboardPrinter(chessboard);
+                Console.Write("Origin: ");
+                Position origin = Screen.ChessPositionReader().ToPosition();
+                Console.Write("Destination: ");
+                Position destination = Screen.ChessPositionReader().ToPosition();
+
+                chessMatch.Moviment(origin, destination);
+            }
+
+
+        }
+        catch (BoardException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+
     }
 }

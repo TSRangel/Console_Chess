@@ -1,4 +1,5 @@
 ﻿using board;
+using chess;
 
 namespace xadrez_console
 {
@@ -21,7 +22,7 @@ namespace xadrez_console
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine(" a b c d e f g h");
+            Console.WriteLine("  a b c d e f g h");
         }
 
         public static void PiecePrinter(Piece piece)
@@ -37,6 +38,14 @@ namespace xadrez_console
                 Console.Write($"{piece} ");
                 Console.ForegroundColor = aux;
             }
+        }
+
+        public static ChessPosition ChessPositionReader()
+        {
+            string position = Console.ReadLine();
+            int row = int.Parse($"{position[0]}");
+            char column = position[1];
+            return new ChessPosition(row, column);
         }
     }
 }

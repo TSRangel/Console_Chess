@@ -6,15 +6,15 @@ namespace chess
     {
         public int Row { get; set; }
         public char Column { get; set; }
-        public ChessPosition(char column, int row)
+        public ChessPosition(int row, char column)
         {
-            Column = column;
             Row = row;
+            Column = column;
         }
 
         public Position ToPosition()
         {
-            return new Position(Row -1, Column - 'a');
+            return new Position(8 - Row, Column - 'a');
         }
 
         public override string ToString()
