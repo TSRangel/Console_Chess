@@ -1,4 +1,6 @@
-﻿namespace board
+﻿using xadrez_console.board.enums;
+
+namespace board
 {
     abstract class Piece
     {
@@ -18,6 +20,22 @@
         public void IncreasesMoviment()
         {
             Moviments += 1;
+        }
+
+        public bool IsThereAnyPossibleMoviment()
+        {
+            bool[,] boardHouses = ValidMoviments();
+            for (int i = 0; i < Board.Rows; i++)
+            {
+                for (int j = 0; j < Board.Columns; j++)
+                {
+                    if (boardHouses[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         abstract public bool[,] ValidMoviments();
