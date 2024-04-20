@@ -38,6 +38,11 @@ namespace board
             return false;
         }
 
+        public bool CanIMoveTo(Position position)
+        {
+            return ValidMoviments()[position.Row, position.Column];
+        }
+
         abstract public bool[,] ValidMoviments();
     }
 }

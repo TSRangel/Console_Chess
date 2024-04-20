@@ -31,7 +31,7 @@ namespace chess
         {
             Moviment(origin, destination);
             Turn++;
-            ChangePlayer(); 
+            ChangePlayer();
         }
 
         public void ValidateOriginPosition(Position position)
@@ -52,12 +52,21 @@ namespace chess
             }
         }
 
+        public void ValidateDestinationPosition(Position origin, Position destination)
+        {
+            if (!Board.Piece(origin).CanIMoveTo(destination))
+            {
+                throw new BoardException("Invalid destination");
+            }
+        }
+
         private void ChangePlayer()
         {
-            if(ActualPlayer == Color.White)
+            if (ActualPlayer == Color.White)
             {
                 ActualPlayer = Color.Black;
-            } else
+            }
+            else
             {
                 ActualPlayer = Color.White;
             }
