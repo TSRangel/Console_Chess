@@ -17,10 +17,7 @@ class Program
                 {
 
                     Console.Clear();
-                    Screen.ChessboardPrinter(chessMatch.Board);
-                    Console.WriteLine();
-                    Console.WriteLine($"Turno: {chessMatch.Turn}");
-                    Console.WriteLine($"Aguardando jogada: {chessMatch.ActualPlayer}");
+                    Screen.MatchPrinter(chessMatch);
 
                     Console.WriteLine();
                     Console.Write("Origin: ");

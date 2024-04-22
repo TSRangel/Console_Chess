@@ -6,6 +6,15 @@ namespace xadrez_console
 {
     class Screen
     {
+        public static void MatchPrinter(ChessMatch chessMatch)
+        {
+            ChessboardPrinter(chessMatch.Board);
+            CapturedPiecesPrinter(chessMatch);
+            Console.WriteLine();
+            Console.WriteLine($"Turno: {chessMatch.Turn}");
+            Console.WriteLine($"Aguardando jogada: {chessMatch.ActualPlayer}");
+        }
+
         public static void ChessboardPrinter(Board board)
         {
             for (int i = 0; i < board.Rows; i++)
@@ -70,6 +79,28 @@ namespace xadrez_console
             int row = int.Parse($"{position[0]}");
             char column = position[1];
             return new ChessPosition(row, column);
+        }
+
+        public static void CapturedPiecesPrinter(ChessMatch chessMatch)
+        {
+            Console.WriteLine("Peças capturadas: ");
+            Console.Write("Brancas: ");
+            HashSetPrinter(chessMatch.CapturedPieces(Color.White));
+            ConsoleColor consoleColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Pretas: ");
+            HashSetPrinter(chessMatch.CapturedPieces(Color.Black));
+            Console.ForegroundColor= consoleColor;
+        }
+
+        public static void HashSetPrinter(HashSet<Piece> pieces)
+        {
+            Console.Write("[ ");
+            foreach(Piece piece in pieces)
+            {
+                Console.Write($"{piece} ");
+            }
+            Console.Write(" ]\n");
         }
     }
 }
