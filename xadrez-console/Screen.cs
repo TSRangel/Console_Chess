@@ -13,6 +13,10 @@ namespace xadrez_console
             Console.WriteLine();
             Console.WriteLine($"Turno: {chessMatch.Turn}");
             Console.WriteLine($"Aguardando jogada: {chessMatch.ActualPlayer}");
+            if(chessMatch.Check)
+            {
+                Console.WriteLine("Check!");
+            }
         }
 
         public static void ChessboardPrinter(Board board)

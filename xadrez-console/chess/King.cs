@@ -21,45 +21,28 @@ namespace chess
             Position position = new Position(0, 0);
 
             position.DefineValues(Position.Row - 1, Position.Column);
-            if (Board.ValidPosition(position) && CanIMove(position))
-            {
-                boardHouses[position.Row, position.Column] = true;
-            }
+            boardHouses = VerifyValidMoviments(position, boardHouses);
 
             position.DefineValues(Position.Row - 1, Position.Column + 1);
-            if(Board.ValidPosition(position) && CanIMove(position))
-            {
-                boardHouses[position.Row, position.Column] = true;
-            }
+            boardHouses = VerifyValidMoviments(position, boardHouses);
 
             position.DefineValues(Position.Row, Position.Column + 1);
-            if (Board.ValidPosition(position) && CanIMove(position))
-            {
-                boardHouses[position.Row, position.Column] = true;
-            }
+            boardHouses = VerifyValidMoviments(position, boardHouses);
 
             position.DefineValues(Position.Row + 1, Position.Column + 1);
-            if(Board.ValidPosition(position) && CanIMove(position))
-            {
-                boardHouses[position.Row, position.Column] = true;
-            }
+            boardHouses = VerifyValidMoviments(position, boardHouses);
 
             position.DefineValues(Position.Row + 1, Position.Column);
-            if (Board.ValidPosition(position) && CanIMove(position))
-            {
-                boardHouses[position.Row, position.Column] = true;
-            }
+            boardHouses = VerifyValidMoviments(position, boardHouses);
 
             position.DefineValues(Position.Row +1, Position.Column -1);
-            if (Board.ValidPosition(position) && CanIMove(position))
-            {
-                boardHouses[position.Row, position.Column] = true;
-            }
+            boardHouses = VerifyValidMoviments(position, boardHouses);
 
             position.DefineValues(Position.Row, Position.Column - 1);
             boardHouses = VerifyValidMoviments(position, boardHouses);
 
-
+            position.DefineValues(Position.Row - 1, Position.Column - 1);
+            boardHouses = VerifyValidMoviments(position, boardHouses);
 
             return boardHouses;
         }

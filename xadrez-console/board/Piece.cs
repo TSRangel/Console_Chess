@@ -22,6 +22,11 @@ namespace board
             Moviments += 1;
         }
 
+        public void DecreaseMoviment()
+        {
+            Moviments -= 1;
+        }
+
         public bool IsThereAnyPossibleMoviment()
         {
             bool[,] boardHouses = ValidMoviments();
