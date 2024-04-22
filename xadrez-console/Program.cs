@@ -40,6 +40,13 @@ class Program
                     Console.ReadLine();
                 }
             }
-        } catch (BoardException e) { Console.WriteLine(e.Message); }
+            Console.Clear();
+            Screen.MatchPrinter(chessMatch);
+
+        }
+        catch (BoardException e)
+        {
+            Console.WriteLine(e.Message);
+        }
     }
 }

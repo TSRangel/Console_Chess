@@ -12,10 +12,18 @@ namespace xadrez_console
             CapturedPiecesPrinter(chessMatch);
             Console.WriteLine();
             Console.WriteLine($"Turno: {chessMatch.Turn}");
+            if (!chessMatch.IsFinished)
+            {
             Console.WriteLine($"Aguardando jogada: {chessMatch.ActualPlayer}");
             if(chessMatch.Check)
             {
-                Console.WriteLine("Check!");
+                Console.WriteLine("xeque!");
+            }
+
+            } else
+            {
+                Console.WriteLine("Xequemate!");
+                Console.WriteLine($"Vencedor: {chessMatch.ActualPlayer}");
             }
         }
 
