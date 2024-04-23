@@ -1,6 +1,5 @@
 ﻿using board;
-using System.Globalization;
-using xadrez_console.board.enums;
+using enums;
 
 namespace chess
 {
@@ -230,10 +229,14 @@ namespace chess
         {
             InsertNewPiece(1, 'c', new Rook(Color.White, Board));
             InsertNewPiece(1, 'd', new King(Color.White, Board));
-            InsertNewPiece(7, 'h', new Rook(Color.White, Board));
+            InsertNewPiece(4, 'd', new Queen(Color.White, Board));
+            InsertNewPiece(2, 'h', new Pawn(Color.White, Board));
+            InsertNewPiece(2, 'g', new Pawn(Color.White, Board));
 
             InsertNewPiece(8, 'a', new King(Color.Black, Board));
-            InsertNewPiece(8, 'b', new Rook(Color.Black, Board));
+            InsertNewPiece(8, 'b', new Bishop(Color.Black, Board));
+            InsertNewPiece(6, 'b', new Bishop(Color.Black, Board));
+            InsertNewPiece(3, 'f', new Pawn(Color.Black, Board));
         }
     }
 }

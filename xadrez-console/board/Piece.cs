@@ -1,4 +1,4 @@
-﻿using xadrez_console.board.enums;
+﻿using enums;
 
 namespace board
 {
@@ -41,6 +41,11 @@ namespace board
                 }
             }
             return false;
+        }
+        protected bool CanIMove(Position position)
+        {
+            Piece piece = Board.Piece(position);
+            return piece == null || piece.Color != Color;
         }
 
         public bool CanIMoveTo(Position position)

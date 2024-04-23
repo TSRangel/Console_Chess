@@ -1,4 +1,4 @@
-﻿namespace xadrez_console.board.enums
+﻿namespace enums
 {
     enum Color
     {

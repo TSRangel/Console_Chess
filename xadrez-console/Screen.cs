@@ -1,6 +1,6 @@
 ﻿using board;
 using chess;
-using xadrez_console.board.enums;
+using enums;
 
 namespace xadrez_console
 {

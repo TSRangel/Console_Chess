@@ -1,13 +1,11 @@
 ﻿using board;
-using xadrez_console.board.enums;
+using enums;
 
 namespace chess
 {
     class Rook : Piece
     {
-        public Rook(Color color, Board board) : base(color, board)
-        {
-        }
+        public Rook(Color color, Board board) : base(color, board) {}
 
         public override string ToString()
         {
@@ -28,7 +26,7 @@ namespace chess
                 {
                     break;
                 }
-                position.Row = position.Row - 1;
+                position.Row -= 1;
             }
 
             position.DefineValues(Position.Row, Position.Column + 1);
@@ -39,7 +37,7 @@ namespace chess
                 {
                     break;
                 }
-                position.Column = position.Column + 1;
+                position.Column += 1;
             }
 
             position.DefineValues(Position.Row + 1, Position.Column);
@@ -50,7 +48,7 @@ namespace chess
                 {
                     break;
                 }
-                position.Row = position.Row + 1;
+                position.Row += 1;
             }
 
             position.DefineValues(Position.Row, Position.Column - 1);
@@ -61,16 +59,10 @@ namespace chess
                 {
                     break;
                 }
-                position.Column = position.Column - 1;
+                position.Column -= 1;
             }
 
             return boardHouses;
-        }
-
-        private bool CanIMove(Position position)
-        {
-            Piece piece = Board.Piece(position);
-            return piece == null || piece.Color != Color;
         }
     }
 }
