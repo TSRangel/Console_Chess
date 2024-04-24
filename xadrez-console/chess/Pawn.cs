@@ -5,7 +5,11 @@ namespace chess
 {
     class Pawn : Piece
     {
-        public Pawn(Color color, Board board) : base(color, board) { }
+        public ChessMatch ChessMatch { get; set; }
+        public Pawn(Color color, Board board, ChessMatch chessMatch) : base(color, board)
+        {
+            ChessMatch = chessMatch;
+        }
 
         public override string ToString()
         {
@@ -31,7 +35,7 @@ namespace chess
                 }
 
                 position.DefineValues(Position.Row - 1, Position.Column - 1);
-                if(Board.ValidPosition(position) && IsThereAnyAdversary(position))
+                if (Board.ValidPosition(position) && IsThereAnyAdversary(position))
                 {
                     boardHouses[position.Row, position.Column] = true;
                 }
@@ -41,7 +45,27 @@ namespace chess
                 {
                     boardHouses[position.Row, position.Column] = true;
                 }
-            } else
+
+                position.DefineValues(Position.Row, Position.Column - 1);
+                if (Position.Row == 3 && Board.ValidPosition(position))
+                {
+                    if (IsThereAnyAdversary(position) && ChessMatch.EnPassantVulnerability == Board.Piece(position))
+                    {
+                        boardHouses[Position.Row - 1, Position.Column - 1] = true;
+                    }
+                }
+
+                position.DefineValues(Position.Row, Position.Column + 1);
+                if (Position.Row == 3 && Board.ValidPosition(position))
+                {
+                    if (IsThereAnyAdversary(position) && ChessMatch.EnPassantVulnerability == Board.Piece(position))
+                    {
+                        boardHouses[Position.Row - 1, Position.Column + 1] = true;
+                    }
+                }
+
+            }
+            else
             {
                 position.DefineValues(Position.Row + 1, Position.Column);
                 if (Board.ValidPosition(position) && CanIMove(position))
@@ -64,6 +88,24 @@ namespace chess
                 if (Board.ValidPosition(position) && IsThereAnyAdversary(position))
                 {
                     boardHouses[position.Row, position.Column] = true;
+                }
+
+                position.DefineValues(Position.Row, Position.Column - 1);
+                if (Position.Row == 4 && Board.ValidPosition(position))
+                {
+                    if (IsThereAnyAdversary(position) && ChessMatch.EnPassantVulnerability == Board.Piece(position))
+                    {
+                        boardHouses[Position.Row + 1, Position.Column - 1] = true;
+                    }
+                }
+
+                position.DefineValues(Position.Row, Position.Column + 1);
+                if (Position.Row == 4 && Board.ValidPosition(position))
+                {
+                    if (IsThereAnyAdversary(position) && ChessMatch.EnPassantVulnerability == Board.Piece(position))
+                    {
+                        boardHouses[Position.Row + 1, Position.Column + 1] = true;
+                    }
                 }
             }
 
